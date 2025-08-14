@@ -27,28 +27,30 @@ function closeArenaMenu() {
 }
 
 // Gestion des clics sur les cartes d'arène
-document.querySelectorAll('.arena-card').forEach(card => {
-    card.addEventListener('click', function() {
-        const arenaId = this.getAttribute('data-arena');
-        
-        // Animation de sélection
-        this.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-            this.style.transform = 'scale(1)';
-        }, 150);
-        
-        // Envoyer la sélection à FiveM
-        fetch(`https://${GetParentResourceName()}/selectArena`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                arena: parseInt(arenaId)
-            })
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.arena-card').forEach(card => {
+        card.addEventListener('click', function() {
+            const arenaId = this.getAttribute('data-arena');
+            
+            // Animation de sélection
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 150);
+            
+            // Envoyer la sélection à FiveM
+            fetch(`https://${GetParentResourceName()}/selectArena`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    arena: parseInt(arenaId)
+                })
+            });
+            
+            closeArenaMenu();
         });
-        
-        closeArenaMenu();
     });
 });
 
@@ -90,15 +92,22 @@ window.addEventListener('message', function(event) {
 });
 
 // Fermer le menu si on clique en dehors
-document.getElementById('arenaMenu').addEventListener('click', function(event) {
-    if (event.target === this) {
-        fetch(`https://${GetParentResourceName()}/closeMenu`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({})
-        });
-        closeArenaMenu();
-    }
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('arenaMenu').addEventListener('click', function(event) {
+        if (event.target === this) {
+            fetch(`https://${GetParentResourceName()}/closeMenu`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({})
+            });
+            closeArenaMenu();
+        }
+    });
 });
+
+// Fonction pour obtenir le nom de la ressource parent (pour FiveM)
+function GetParentResourceName() {
+    return window.location.hostname;
+}

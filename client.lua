@@ -15,18 +15,22 @@ Citizen.CreateThread(function()
     FreezeEntityPosition(gunfightPed, true)
     SetEntityInvincible(gunfightPed, true)
     SetBlockingOfNonTemporaryEvents(gunfightPed, true)
+    
     -- main loop for interaction
     while true do
         Citizen.Wait(0)
         local p = PlayerPedId()
         local pcoords = GetEntityCoords(p)
         local d = #(pcoords - Config.SpawnPoint)
+        
         if d < 50.0 then
             DrawMarker(1, Config.SpawnPoint.x, Config.SpawnPoint.y, Config.SpawnPoint.z - 1.0, 0,0,0, 0,0,0, 1.0,1.0,0.2, 50,200,255, 100, false, true, 2, false, nil, nil, false)
+            
             if d < Config.InteractDistance then
                 SetTextComponentFormat('STRING')
                 AddTextComponentString('Appuyez sur ~INPUT_CONTEXT~ pour rejoindre une arène PvP')
                 DisplayHelpTextFromStringLabel(0,0,1,-1)
+                
                 if IsControlJustReleased(0, 38) then
                     -- Ouvrir l'interface moderne
                     SetNuiFocus(true, true)
@@ -39,7 +43,6 @@ Citizen.CreateThread(function()
 
         -- show simple HUD when in arena
         if inArena then
-            local x,y,z = table.unpack(GetEntityCoords(PlayerPedId()))
             SetTextScale(0.4, 0.4)
             SetTextFont(4)
             SetTextProportional(1)

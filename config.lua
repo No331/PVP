@@ -1,8 +1,8 @@
 Config = {}
 
 -- spawn point where a PED 'GUNFIGHT' will appear and where players can press E to join
-Config.SpawnPoint = vector3(-1034.0, -2738.0, 20.17) -- change as needed
-Config.SpawnHeading = 160.0
+Config.SpawnPoint = vector3(237.13, 784.86, 30.61) -- change as needed
+Config.SpawnHeading = 320.89
 
 -- arenas
 Config.Arenas = {

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PvP Arena Selection</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="arenaMenu" class="arena-menu hidden">
+        <div class="menu-container">
+            <div class="menu-header">
+                <h1>SÉLECTION D'ARÈNE</h1>
+                <p>Choisissez votre zone de combat</p>
+            </div>
+            
+            <div class="arenas-grid">
+                <div class="arena-card" data-arena="1">
+                    <div class="arena-image">
+                        <div class="arena-overlay">
+                            <h3>DOCK</h3>
+                            <p>Zone portuaire</p>
+                        </div>
+                    </div>
+                    <div class="arena-info">
+                        <span class="arena-number">1</span>
+                        <div class="arena-details">
+                            <h4>Dock</h4>
+                            <p>Combat naval</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arena-card" data-arena="2">
+                    <div class="arena-image">
+                        <div class="arena-overlay">
+                            <h3>PORT</h3>
+                            <p>Zone industrielle</p>
+                        </div>
+                    </div>
+                    <div class="arena-info">
+                        <span class="arena-number">2</span>
+                        <div class="arena-details">
+                            <h4>Port</h4>
+                            <p>Combat urbain</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arena-card" data-arena="3">
+                    <div class="arena-image">
+                        <div class="arena-overlay">
+                            <h3>HANGAR</h3>
+                            <p>Zone aéroportuaire</p>
+                        </div>
+                    </div>
+                    <div class="arena-info">
+                        <span class="arena-number">3</span>
+                        <div class="arena-details">
+                            <h4>Hangar</h4>
+                            <p>Combat aérien</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arena-card" data-arena="4">
+                    <div class="arena-image">
+                        <div class="arena-overlay">
+                            <h3>USINE</h3>
+                            <p>Zone manufacturière</p>
+                        </div>
+                    </div>
+                    <div class="arena-info">
+                        <span class="arena-number">4</span>
+                        <div class="arena-details">
+                            <h4>Usine</h4>
+                            <p>Combat industriel</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-footer">
+                <p>Appuyez sur <span class="key">ESC</span> pour fermer</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

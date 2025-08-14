@@ -28,8 +28,11 @@ Citizen.CreateThread(function()
                 AddTextComponentString('Appuyez sur ~INPUT_CONTEXT~ pour rejoindre une arène PvP')
                 DisplayHelpTextFromStringLabel(0,0,1,-1)
                 if IsControlJustReleased(0, 38) then
-                    -- show simple choice: 1 = Dome, 2 = Yacht
-                    TriggerEvent('pvp:openArenaMenu')
+                    -- Ouvrir l'interface moderne
+                    SetNuiFocus(true, true)
+                    SendNUIMessage({
+                        type = "openArenaMenu"
+                    })
                 end
             end
         end
@@ -48,25 +51,17 @@ Citizen.CreateThread(function()
     end
 end)
 
--- simple arena menu (text input keys)
-RegisterNetEvent('pvp:openArenaMenu')
-AddEventHandler('pvp:openArenaMenu', function()
-    -- minimal menu: 1 or 2 keys
-    SetNotificationTextEntry("STRING")
-    AddTextComponentString("Appuie sur ~g~1~s~ pour Dome, ~g~2~s~ pour Yacht")
-    DrawNotification(false, false)
-    local choosing = true
-    local start = GetGameTimer()
-    while choosing and (GetGameTimer()-start) < 8000 do
-        Citizen.Wait(0)
-        if IsControlJustReleased(0, 157) then -- 1
-            TriggerServerEvent('pvp:joinArena', 1)
-            choosing = false
-        elseif IsControlJustReleased(0, 158) then -- 2
-            TriggerServerEvent('pvp:joinArena', 2)
-            choosing = false
-        end
-    end
+-- Callbacks NUI
+RegisterNUICallback('selectArena', function(data, cb)
+    local arenaId = data.arena
+    SetNuiFocus(false, false)
+    TriggerServerEvent('pvp:joinArena', arenaId)
+    cb('ok')
+end)
+
+RegisterNUICallback('closeMenu', function(data, cb)
+    SetNuiFocus(false, false)
+    cb('ok')
 end)
 
 RegisterNetEvent('pvp:forceJoinClient')

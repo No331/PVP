@@ -6,8 +6,10 @@ Config.SpawnHeading = 160.0
 
 -- arenas
 Config.Arenas = {
-    {name = "Dome Dock", coord = vector3(-335.0, -2800.0, 8.0), radius = 80.0, heading = 90.0},
-    {name = "Yacht", coord = vector3(-2040.0, -1030.0, 15.0), radius = 60.0, heading = 45.0}
+    {name = "Dock", coord = vector3(-335.0, -2800.0, 8.0), radius = 80.0, heading = 90.0},
+    {name = "Port", coord = vector3(-2040.0, -1030.0, 15.0), radius = 60.0, heading = 45.0},
+    {name = "Hangar", coord = vector3(-1100.0, -2900.0, 13.0), radius = 70.0, heading = 180.0},
+    {name = "Usine", coord = vector3(700.0, -1000.0, 22.0), radius = 65.0, heading = 270.0}
 }
 
 Config.GunWeapon = "WEAPON_ASSAULTRIFLE"
